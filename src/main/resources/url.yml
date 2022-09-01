@@ -1,0 +1,7 @@
+football-data:
+  api: https://api.football-data.org
+
+---
+football-data:
+  teams:
+    matches: /v4/teams/{id}/matches?competitions=PL

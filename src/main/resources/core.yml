@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    group:
+      - develop: "test, local, dev"
+      - production: "real"
+
+  config:
+    import:
+      - classpath:url.yml

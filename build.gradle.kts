@@ -31,6 +31,8 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux
+	implementation("org.springframework.boot:spring-boot-starter-webflux:2.7.0")
 }
 
 tasks.withType<KotlinCompile> {
