@@ -6,4 +6,5 @@ spring:
 
   config:
     import:
-      - classpath:url.yml
+      - classpath: url.yml
+      - classpath: application.yml
