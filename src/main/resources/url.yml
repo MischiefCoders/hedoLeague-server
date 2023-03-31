@@ -1,7 +1,14 @@
 football-data:
   domain: https://api.football-data.org
+  api-version: v4
 
 ---
 football-data:
   teams:
-    matches: {football-data.domain}/v4/teams/{id}/matches
+    particular: {football-data.domain}/{football-data.api-version}/teams/{id}
+    matches: {football-data.domain}/{football-data.api-version}/teams/{id}/matches
+  person:
+    particular: {football-data.domain}/{football-data.api-version}/persons/{id}
+    matches: {football-data.domain}/{football-data.api-version}/persons/{id}/matches
+  match:
+    particular: {football-data.domain}/{football-data.api-version}/matches/{id}
