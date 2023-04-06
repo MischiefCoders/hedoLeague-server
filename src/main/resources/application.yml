@@ -1,8 +1,4 @@
-team:
-  id:
-    arsenal: 57
-    chelsea: 61
-    liverpool: 64
-    mancity: 65
-    manunited: 66
-    tottenham: 73
+spring:
+  config:
+    import:
+      - classpath:core.yml

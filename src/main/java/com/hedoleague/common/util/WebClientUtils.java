@@ -2,6 +2,7 @@ package com.hedoleague.common.util;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.net.URI;
 import java.util.Map;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.util.LinkedMultiValueMap;
@@ -15,13 +16,19 @@ import reactor.core.publisher.Mono;
  */
 public class WebClientUtils {
 
+  // FIXME : 인증키 관리 어떻게?
+  private static final String X_AUTH_TOKEN = "89fcb776fb454ad3b8f5d1187b43a220";
   private static final WebClient webClient = WebClient.create();
 
-  public static <T> Mono<T> get(String url, Object request, ParameterizedTypeReference<T> responseType) {
+  public static <T> Mono<T> get(URI url, Map<String, String> requestParams, ParameterizedTypeReference<T> responseType) {
+    MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
+    multiValueMap.setAll(requestParams);
+
     return webClient.get()
-        .uri(uriBuilder -> uriBuilder.path(url)
-            .queryParams(objectToMultiValueMap(request))
+        .uri(uriBuilder -> uriBuilder.path(url.getPath())
+            .queryParams(multiValueMap)
             .build())
+        .header("X-Auth-Token", X_AUTH_TOKEN)
         .retrieve()
         .bodyToMono(responseType);
   }
@@ -32,15 +39,6 @@ public class WebClientUtils {
         .body(BodyInserters.fromValue(request))
         .retrieve()
         .bodyToMono(responseType);
-  }
-
-  private static MultiValueMap<String, String> objectToMultiValueMap(Object request) {
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
-    objectMapper.convertValue(request, new TypeReference<Map<String, String>>() {}).forEach(multiValueMap::add);
-
-    return multiValueMap;
   }
 
 }
