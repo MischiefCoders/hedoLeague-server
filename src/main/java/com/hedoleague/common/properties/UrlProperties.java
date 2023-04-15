@@ -1,4 +1,4 @@
-package com.hedoleague.common.util.properties;
+package com.hedoleague.common.properties;
 
 import java.net.URI;
 import java.net.URLDecoder;

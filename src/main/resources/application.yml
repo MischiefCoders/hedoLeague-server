@@ -1,4 +1,4 @@
 spring:
   config:
     import:
-      - classpath:core.yml
+      - classpath:url.yml

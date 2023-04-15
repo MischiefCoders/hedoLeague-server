@@ -3,7 +3,7 @@ package com.hedoleague.common.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.hedoleague.common.util.properties.UrlProperties;
+import com.hedoleague.common.properties.UrlProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
