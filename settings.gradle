@@ -6,3 +6,7 @@ pluginManagement {
 	}
 }
 rootProject.name = "hedoLeague"
+
+include 'hedoLeague-core'
+include 'hedoLeague-api-server'
+include 'hedoLeague-web-server'

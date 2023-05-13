@@ -1,48 +1,73 @@
 plugins {
 	id 'java'
-	id 'org.springframework.boot' version '2.7.12-SNAPSHOT'
+	id 'org.springframework.boot' version '2.7.11'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
-group = 'com.hedoleague'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+allprojects {
+	repositories {
+		mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+}
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'org.asciidoctor.jvm.convert'
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
+	group = 'com.hedoleague'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '11'
+
+	repositories {
+		mavenCentral()
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'https://repo.spring.io/snapshot' }
+	}
+
+	ext {
+		set('snippetsDir', file("build/generated-snippets"))
+	}
+
+	configurations {
+		compileOnly {
+			extendsFrom annotationProcessor
+		}
+	}
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-web'
+		implementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.6'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+		annotationProcessor 'org.projectlombok:lombok'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+	}
+
+	tasks.named('test') {
+		outputs.dir snippetsDir
+		useJUnitPlatform()
+	}
+
+	tasks.named('asciidoctor') {
+		inputs.dir snippetsDir
+		dependsOn test
 	}
 }
 
-repositories {
-	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
-	maven { url 'https://repo.spring.io/snapshot' }
+project(':hedoLeague-api-server') {
+	dependencies {
+		implementation project(':hedoLeague-core')
+	}
 }
 
-ext {
-	set('snippetsDir', file("build/generated-snippets"))
-}
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-webflux:2.7.6'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-}
-
-tasks.named('test') {
-	outputs.dir snippetsDir
-	useJUnitPlatform()
-}
-
-tasks.named('asciidoctor') {
-	inputs.dir snippetsDir
-	dependsOn test
+project(':hedoLeague-web-server') {
+	dependencies {
+		implementation project(':hedoLeague-core')
+	}
 }
