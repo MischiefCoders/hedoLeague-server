@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/")
-public class TableController {
+public class TableWebController {
 
   private final ApiTableServiceImpl tableService;
 

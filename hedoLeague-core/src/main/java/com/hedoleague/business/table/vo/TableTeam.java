@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class TableTeam {
 
+  private Integer position;
   private Team team;
   private Integer played;
   private Integer points;

@@ -37,7 +37,15 @@ public class ApiTableServiceImpl implements TableService {
 
     result.sort(new PlComparator());
 
+    setPosition(result);
+
     return result;
+  }
+
+  private void setPosition(List<TableTeam> result) {
+    for (int i = 1; i <= result.size(); i++) {
+      result.get(i - 1).setPosition(i);
+    }
   }
 
   private TableTeam calculateTableTeam(TeamEnum teamEnum, List<Match> matches) {
