@@ -8,5 +8,5 @@ pluginManagement {
 rootProject.name = "hedoLeague"
 
 include 'hedoLeague-core'
-include 'hedoLeague-api-server'
-include 'hedoLeague-web-server'
+include 'hedoLeague-api'
+include 'hedoLeague-web'

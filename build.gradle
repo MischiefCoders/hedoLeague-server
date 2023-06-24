@@ -59,13 +59,13 @@ subprojects {
 	}
 }
 
-project(':hedoLeague-api-server') {
+project(':hedoLeague-api') {
 	dependencies {
 		implementation project(':hedoLeague-core')
 	}
 }
 
-project(':hedoLeague-web-server') {
+project(':hedoLeague-web') {
 	dependencies {
 		implementation project(':hedoLeague-core')
 	}
