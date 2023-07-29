@@ -1,22 +1,43 @@
-
-
-ext {
-    set('snippetsDir', file("build/generated-snippets"))
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.11'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+//    id 'org.asciidoctor.jvm.convert'
 }
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-    asciidoctorExt
+group = 'com.hedoleague'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
 }
+
+//ext {
+//    set('snippetsDir', file("build/generated-snippets"))
+//}
+//
+//configurations {
+//    asciidoctorExt
+//}
+
+//tasks.named('asciidoctor') {
+//    inputs.dir snippetsDir
+//    dependsOn test
+//}
+//
+//asciidoctor {
+//    inputs.dir snippetsDir
+//    configurations 'asciidoctorExt'
+//    dependsOn test
+//}
 
 dependencies {
-    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.6.RELEASE'
+    implementation project(':hedoLeague-core')
+//    asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor:2.0.6.RELEASE'
+//    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
-asciidoctor {
-    inputs.dir snippetsDir
-    configurations 'asciidoctorExt'
-    dependsOn test
-}
+
+
+
