@@ -1,14 +1,14 @@
 package com.hedoleague.common.properties;
 
 import java.net.URI;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
-@Data
+@Setter
+@Getter
 @Configuration
 @ConfigurationProperties("football-data")
 public class UrlProperties {
@@ -16,34 +16,30 @@ public class UrlProperties {
   private String domain;
   private String apiVersion;
 
-  private URI teamsMatchesUrl;
-  private URI teamsParticularUrl;
-  private URI personMatchesUrl;
-  private URI personParticularUrl;
-  private URI matchParticularUrl;
+  private String teamsMatchesUrl;
+  private String teamsParticularUrl;
+  private String personMatchesUrl;
+  private String personParticularUrl;
+  private String matchParticularUrl;
 
   public URI getTeamsMatchesUrl(int id) {
-    return URI.create(makeDecodedURL(this.getTeamsMatchesUrl().toString(), id));
+    return URI.create(StringUtils.replace(this.getTeamsMatchesUrl(), "{id}", String.valueOf(id)));
   }
 
   public URI getTeamsParticularUrl(int id) {
-    return URI.create(makeDecodedURL(this.getTeamsParticularUrl().toString(), id));
+    return URI.create(StringUtils.replace(this.getTeamsParticularUrl(), "{id}", String.valueOf(id)));
   }
 
   public URI getPersonMatchesUrl(int id) {
-    return URI.create(makeDecodedURL(this.getPersonMatchesUrl().toString(), id));
+    return URI.create(StringUtils.replace(this.getPersonMatchesUrl(), "{id}", String.valueOf(id)));
   }
 
   public URI getPersonParticularUrl(int id) {
-    return URI.create(makeDecodedURL(this.getPersonParticularUrl().toString(), id));
+    return URI.create(StringUtils.replace(this.getPersonParticularUrl(), "{id}", String.valueOf(id)));
   }
 
   public URI getMatchParticularUrl(int id) {
-    return URI.create(makeDecodedURL(this.getMatchParticularUrl().toString(), id));
+    return URI.create(StringUtils.replace(this.getMatchParticularUrl(), "{id}", String.valueOf(id)));
   }
 
-  private String makeDecodedURL(String url, int id) {
-    return StringUtils.replace(URLDecoder.decode(url, Charset.defaultCharset()), "{id}", String.valueOf(id));
-  }
-  
 }

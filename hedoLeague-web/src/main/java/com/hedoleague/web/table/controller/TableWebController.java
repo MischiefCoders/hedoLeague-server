@@ -1,6 +1,6 @@
 package com.hedoleague.web.table.controller;
 
-import com.hedoleague.business.table.service.ApiTableServiceImpl;
+import com.hedoleague.business.table.service.TableService;
 import com.hedoleague.business.table.vo.TableTeam;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class TableWebController {
 
-  private final ApiTableServiceImpl tableService;
+  private final TableService tableService;
 
   @GetMapping("")
   public String list(Model model) {

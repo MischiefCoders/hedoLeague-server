@@ -16,14 +16,14 @@ public class MatchApiService {
   private final UrlProperties urlProperties;
   private final WebClientService webClientService;
 
+  // FIXME : 새시즌 돌입!
   public TeamMatchesApiResponse getMatchesByTeam(int teamId) {
     Map<String, String> params = new HashMap<>();
     params.put("competitions", "PL");
     params.put("season", "2022");
     params.put("status", "FINISHED");
 
-    Mono<TeamMatchesApiResponse> listMono = webClientService.get(urlProperties.getTeamsMatchesUrl(teamId), params,
-        new ParameterizedTypeReference<TeamMatchesApiResponse>() {});
+    Mono<TeamMatchesApiResponse> listMono = webClientService.get(urlProperties.getTeamsMatchesUrl(teamId), params, new ParameterizedTypeReference<>() {});
 
 
     return listMono.flux().toStream().findFirst().orElseThrow(IllegalArgumentException::new);
