@@ -1,4 +1,4 @@
 spring:
-  config:
-    import:
-      - classpath:url.yml
+  profiles:
+    include:
+      - core

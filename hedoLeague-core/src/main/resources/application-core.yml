@@ -1,9 +1,11 @@
+
+# url
 football-data:
   domain: https://api.football-data.org
   api-version: v4
 
-  teams-particular-url: ${football-data.domain}/${football-data.api-version}/teams/{id}
   teams-matches-url: ${football-data.domain}/${football-data.api-version}/teams/{id}/matches
-  person-particular-url: ${football-data.domain}/${football-data.api-version}/persons/{id}
+  teams-particular-url: ${football-data.domain}/${football-data.api-version}/teams/{id}
   person-matches-url: ${football-data.domain}/${football-data.api-version}/persons/{id}/matches
+  person-particular-url: ${football-data.domain}/${football-data.api-version}/persons/{id}
   match-particular-url: ${football-data.domain}/${football-data.api-version}/matches/{id}
