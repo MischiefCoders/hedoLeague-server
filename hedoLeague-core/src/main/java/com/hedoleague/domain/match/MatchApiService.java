@@ -1,7 +1,7 @@
-package com.hedoleague.common.match;
+package com.hedoleague.domain.match;
 
-import com.hedoleague.common.properties.UrlProperties;
-import com.hedoleague.util.WebClientService;
+import com.hedoleague.configuration.properties.UrlProperties;
+import com.hedoleague.infrastructure.ApiClient;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
@@ -14,16 +14,16 @@ import reactor.core.publisher.Mono;
 public class MatchApiService {
 
   private final UrlProperties urlProperties;
-  private final WebClientService webClientService;
+  private final ApiClient apiClient;
 
   // FIXME : 새시즌 돌입!
   public TeamMatchesApiResponse getMatchesByTeam(int teamId) {
     Map<String, String> params = new HashMap<>();
     params.put("competitions", "PL");
-    params.put("season", "2022");
+    params.put("season", "2023");
     params.put("status", "FINISHED");
 
-    Mono<TeamMatchesApiResponse> listMono = webClientService.get(urlProperties.getTeamsMatchesUrl(teamId), params, new ParameterizedTypeReference<>() {});
+    Mono<TeamMatchesApiResponse> listMono = apiClient.get(urlProperties.getTeamsMatchesUrl(teamId), params, new ParameterizedTypeReference<>() {});
 
 
     return listMono.flux().toStream().findFirst().orElseThrow(IllegalArgumentException::new);

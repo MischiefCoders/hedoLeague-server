@@ -1,8 +1,8 @@
 package com.hedoleague.api.table.controller;
 
 import com.hedoleague.api.table.entity.TableListResponse;
-import com.hedoleague.business.table.service.TableService;
-import com.hedoleague.business.table.vo.TableTeam;
+import com.hedoleague.application.table.TableService;
+import com.hedoleague.domain.table.vo.TableTeam;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

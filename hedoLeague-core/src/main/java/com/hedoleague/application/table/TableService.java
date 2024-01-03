@@ -1,6 +1,6 @@
-package com.hedoleague.business.table.service;
+package com.hedoleague.application.table;
 
-import com.hedoleague.business.table.vo.TableTeam;
+import com.hedoleague.domain.table.vo.TableTeam;
 import java.util.List;
 
 public interface TableService {

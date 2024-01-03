@@ -1,4 +1,4 @@
-package com.hedoleague.business.vo;
+package com.hedoleague.common.vo;
 
 import lombok.Data;
 

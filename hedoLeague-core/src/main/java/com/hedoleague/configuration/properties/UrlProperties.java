@@ -1,4 +1,4 @@
-package com.hedoleague.common.properties;
+package com.hedoleague.configuration.properties;
 
 import java.net.URI;
 import lombok.Getter;

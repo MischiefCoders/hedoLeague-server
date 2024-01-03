@@ -1,6 +1,6 @@
-package com.hedoleague.util;
+package com.hedoleague.common.util;
 
-import com.hedoleague.business.table.vo.TableTeam;
+import com.hedoleague.domain.table.vo.TableTeam;
 import java.util.Comparator;
 
 /**

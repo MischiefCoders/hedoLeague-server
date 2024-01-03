@@ -1,5 +1,6 @@
-package com.hedoleague.common.match;
+package com.hedoleague.domain.match;
 
+import com.hedoleague.domain.match.entity.Match;
 import java.util.List;
 import lombok.Data;
 

@@ -1,12 +1,12 @@
-package com.hedoleague.business.table.service;
+package com.hedoleague.application.table;
 
-import com.hedoleague.business.table.vo.TableTeam;
-import com.hedoleague.business.vo.Score;
-import com.hedoleague.business.vo.Team;
-import com.hedoleague.common.match.Match;
+import com.hedoleague.domain.table.vo.TableTeam;
+import com.hedoleague.common.vo.Score;
+import com.hedoleague.common.vo.Team;
+import com.hedoleague.domain.match.entity.Match;
 import com.hedoleague.common.enumeration.TeamEnum;
-import com.hedoleague.common.match.MatchApiService;
-import com.hedoleague.util.PlComparator;
+import com.hedoleague.domain.match.MatchApiService;
+import com.hedoleague.common.util.PlComparator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,8 +28,8 @@ public class ApiTableServiceImpl implements TableService {
     List<TableTeam> result = new ArrayList<>();
 
     for (TeamEnum team : TeamEnum.values()) {
-      List<Match> matches = matchApiService.getMatchesByTeam(team.getId()).getMatches()
-          .stream().filter(match -> isHedoLeagueMatch(match.getHomeTeam(), match.getAwayTeam()))
+      List<Match> matches = matchApiService.getMatchesByTeam(team.getId()).getMatches().stream()
+          .filter(Match::isHedoLeagueMatch)
           .collect(Collectors.toList());
 
       result.add(calculateTableTeam(team, matches));
@@ -102,11 +102,6 @@ public class ApiTableServiceImpl implements TableService {
         .goalsAgainst(goalsAgainst)
         .goalDifference(goalsFor - goalsAgainst)
         .build();
-  }
-
-  private boolean isHedoLeagueMatch(Team homeTeam, Team awayTeam) {
-    return Arrays.stream(TeamEnum.values()).anyMatch(teamEnum -> teamEnum.getId() == Integer.parseInt(homeTeam.getId())) &&
-        Arrays.stream(TeamEnum.values()).anyMatch(teamEnum -> teamEnum.getId() == Integer.parseInt(awayTeam.getId()));
   }
 
   private boolean isHomeTeam(Match match, int teamId) {

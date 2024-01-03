@@ -1,7 +1,7 @@
 package com.hedoleague.web.table.controller;
 
-import com.hedoleague.business.table.service.TableService;
-import com.hedoleague.business.table.vo.TableTeam;
+import com.hedoleague.application.table.TableService;
+import com.hedoleague.domain.table.vo.TableTeam;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/")
+@RequestMapping("/tables")
 public class TableWebController {
 
   private final TableService tableService;

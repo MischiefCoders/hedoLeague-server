@@ -1,6 +1,6 @@
 package com.hedoleague.api.table.entity;
 
-import com.hedoleague.business.table.vo.TableTeam;
+import com.hedoleague.domain.table.vo.TableTeam;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;

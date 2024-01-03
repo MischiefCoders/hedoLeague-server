@@ -3,6 +3,8 @@ package com.hedoleague.common.match;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.hedoleague.common.enumeration.TeamEnum;
+import com.hedoleague.domain.match.MatchApiService;
+import com.hedoleague.domain.match.TeamMatchesApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
