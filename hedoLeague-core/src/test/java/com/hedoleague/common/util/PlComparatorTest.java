@@ -21,7 +21,7 @@ class PlComparatorTest {
 
   @Test
   @DisplayName("승점 다른 케이스")
-  public void test_comparator_difference_points() {
+  void test_comparator_difference_points() {
     teams.add(makeTableTeam("B", 15, 10, 15, 5));
     teams.sort(new PlComparator());
 
@@ -30,7 +30,7 @@ class PlComparatorTest {
 
   @Test
   @DisplayName("골득실 다른 케이스")
-  public void test_comparator_different_goal_difference() {
+  void test_comparator_different_goal_difference() {
     teams.add(makeTableTeam("B", 11, 10, 15, 5));
     teams.sort(new PlComparator());
 
@@ -39,7 +39,7 @@ class PlComparatorTest {
 
   @Test
   @DisplayName("득점 다른 케이스")
-  public void test_comparator_different_goal_against() {
+  void test_comparator_different_goal_against() {
     teams.add(makeTableTeam("B", 11, 5, 10, 5));
     teams.sort(new PlComparator());
 
