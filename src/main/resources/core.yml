@@ -1,5 +1,0 @@
-spring:
-  config:
-    import:
-      - classpath:url.yml
-      - classpath:team.yml

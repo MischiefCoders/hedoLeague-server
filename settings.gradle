@@ -1,0 +1,5 @@
+rootProject.name = "hedoLeague"
+
+include 'hedoLeague-core'
+include 'hedoLeague-api'
+include 'hedoLeague-web'
